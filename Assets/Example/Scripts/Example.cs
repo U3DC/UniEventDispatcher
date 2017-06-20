@@ -20,8 +20,11 @@ public class Example : MonoBehaviour
     /// </summary>
     private Slider sliderB;
 
+	Renderer _render;
+
 	void Start () 
     {
+		_render = GetComponent<Renderer> ();
 	    //在接收者中注册事件及其回调方法
         NotificationCenter.Get().AddEventListener("ChangeColor", ChangeColor);
 
@@ -53,6 +56,6 @@ public class Example : MonoBehaviour
     {
         Debug.Log(notific.ToString());
         //设置颜色
-        renderer.material.color = (Color)notific.param;
+        _render.material.color = (Color)notific.param;
     }
 }
